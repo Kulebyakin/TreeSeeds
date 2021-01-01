@@ -7,9 +7,8 @@
     <tr>
       <th>Title</th>
       <th>Latin title</th>
-      <th>Description</th>
       <th>Usda</th>
-      <th>Image</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,9 +18,8 @@
       <tr>
         <td><%= seed.title %></td>
         <td><%= seed.latin_title %></td>
-        <td><%= seed.description %></td>
         <td><%= seed.usda %></td>
-        <td><%= seed.image %></td>
+        <td><%= seed.description[0..50] %></td>
         <td><%= link_to 'Show', seed %></td>
         <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
         <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>

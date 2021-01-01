@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Seeds</h1>
+<h1 class="my-3">Seeds</h1>
 
 <table>
   <thead>
@@ -19,7 +17,7 @@
         <td><%= seed.title %></td>
         <td><%= seed.latin_title %></td>
         <td><%= seed.usda %></td>
-        <td><%= seed.description[0..50] %></td>
+        <td><%= seed.description[0..50] if seed.description.present? && seed.description.length > 50 %></td>
         <td><%= link_to 'Show', seed %></td>
         <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
         <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>

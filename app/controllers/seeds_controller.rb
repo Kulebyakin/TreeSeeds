@@ -4,7 +4,7 @@ class SeedsController < ApplicationController
   # GET /seeds
   # GET /seeds.json
   def index
-    @seeds = Seed.all
+    @seeds = Seed.all().order(id: :asc)
   end
 
   # GET /seeds/1

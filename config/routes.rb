@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', sign_up: 'registration' }
 
   devise_scope :user do
-    get 'users/sign_out' => "devise/sessions#destroy"
+    get 'users/logout' => "devise/sessions#destroy"
   end
 
   resources :seeds

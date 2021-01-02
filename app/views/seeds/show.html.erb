@@ -22,7 +22,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @seed.image %>
+  <%= image_tag(@seed.image.thumb.url, alt: @seed.title) if @seed.image? %>
 </p>
 
 <%= link_to 'Edit', edit_seed_path(@seed) %> |

@@ -1,31 +1,22 @@
 <h1 class="my-3">Seeds</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Latin title</th>
-      <th>Usda</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @seeds.each do |seed| %>
-      <tr>
-        <td><%= seed.title %></td>
-        <td><%= seed.latin_title %></td>
-        <td><%= seed.usda %></td>
-        <td><%= seed.description[0..50] if seed.description.present? && seed.description.length > 50 %></td>
-        <td><%= link_to 'Show', seed %></td>
-        <td><%= link_to 'Edit', edit_seed_path(seed) %></td>
-        <td><%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="row">
+  <% @seeds.each do |seed| %>
+    <% if seed.image? %>
+    <div class="col-md-3">
+      <%= image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail")  %>
+      <p><%= seed.title %></p>
+      <%# seed.latin_title %>
+      <%# seed.usda %>
+      <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>
+      <p>
+        <%= link_to 'Show', seed %> | 
+        <%= link_to 'Edit', edit_seed_path(seed) %> | 
+        <%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+    </div>
     <% end %>
-  </tbody>
-</table>
-
+  <% end %>
+</div>
 <br>
 
 <%= link_to 'New Seed', new_seed_path %>

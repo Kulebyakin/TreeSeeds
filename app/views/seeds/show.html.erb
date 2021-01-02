@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-5 my-3">
     <p>
-      <%= image_tag(@seed.image.thumb.url, alt: @seed.title, class: "img-fluid") if @seed.image? %>
+      <%= link_to(image_tag(@seed.image.thumb.url, alt: @seed.title, class: "img-fluid"), @seed.image.url) if @seed.image? %>
     </p>
   </div>
   <div class="col-md-7 my-3">

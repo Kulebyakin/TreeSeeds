@@ -9,14 +9,10 @@
     </p>
   </div>
   <div class="col-md-7 my-3">
-
-    
-      
     <p>
       <strong>Зона морозостойкости USDA:</strong>
       <%= @seed.usda %>
     </p>
-
     <p>
       <strong>Описание:</strong> 
       <%= simple_format(@seed.description) %>
@@ -26,5 +22,5 @@
 
 
 
-<%= link_to 'Edit', edit_seed_path(@seed) %> |
-<%= link_to 'Back', seeds_path %>
+<%# link_to 'Edit', edit_seed_path(@seed) %>
+<%# link_to 'Back', seeds_path %>

@@ -3,20 +3,20 @@
   <% @seeds.each do |seed| %>
     <% if seed.image? %>
     <div class="col-md-3">
-      <%= image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail")  %>
+      <%= link_to(image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
       <p><%= seed.title %></p>
       <%# seed.latin_title %>
       <%# seed.usda %>
       <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>
-      <p>
-        <%= link_to 'Show', seed %> | 
-        <%= link_to 'Edit', edit_seed_path(seed) %> | 
-        <%= link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </p>
+      <%# <p>
+        <%# link_to 'Show', seed %>
+        <%# link_to 'Edit', edit_seed_path(seed) %>
+        <%# link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%# </p> %>
     </div>
     <% end %>
   <% end %>
 </div>
 <br>
 
-<%= link_to 'New Seed', new_seed_path %>
+<%# link_to 'New Seed', new_seed_path %>

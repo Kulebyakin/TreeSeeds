@@ -10,10 +10,10 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.authentication_keys = [ :login ]
+  # config.authentication_keys = [ :login ]
 
-  config.reset_password_keys = [ :username ]
-  config.confirmation_keys = [ :username ]
+  config.reset_password_keys = [ :email ]
+  config.confirmation_keys = [ :email ]
   
 
   # The secret key used by Devise. Devise uses this key to generate

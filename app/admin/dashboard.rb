@@ -2,6 +2,18 @@ ActiveAdmin.register_page "Dashboard" do
   menu priority: 1, label: proc { I18n.t("active_admin.dashboard") }
 
   content title: proc { I18n.t("active_admin.dashboard") } do
+    # panel "Seeds" do
+    #   Seed.all().map do |seed|
+    #     columns do
+    #       column do
+    #         span seed.title 
+    #       end
+    #       column do
+    #         span seed.latin_title 
+    #       end
+    #     end
+    #   end
+    # end
     # div class: "blank_slate_container", id: "dashboard_default_message" do
     #   span class: "blank_slate" do
     #     span I18n.t("active_admin.dashboard_welcome.welcome")
@@ -22,17 +34,11 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
 
-      div do
+      # div do
         # panel "Info" do
         #   para "Welcome to ActiveAdmin."
         # end
-        panel "Seeds" do
-          Seed.all().map do |seed|
-            li seed.title 
-            seed.latin_title
-          end
-        end
-      end
+      # end
     # end
   end # content
 end

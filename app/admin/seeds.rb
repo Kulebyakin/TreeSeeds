@@ -13,7 +13,7 @@ ActiveAdmin.register Seed do
 
   filter :title
   filter :latin_title
-  # filter :sign_in_count
+  filter :usda
   # filter :created_at
 
   form do |f|

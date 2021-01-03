@@ -1,5 +1,5 @@
 ActiveAdmin.register Seed do
-  permit_params :title, :latin_title, :description
+  permit_params :title, :latin_title, :description, :usda, :image
 
   index do
     selectable_column
@@ -7,13 +7,16 @@ ActiveAdmin.register Seed do
     column :title
     column :latin_title
     column :usda
-    # column :created_at
+    column :image
+    # column :description
+    column :created_at
     actions
   end
 
   filter :title
   filter :latin_title
   filter :usda
+  # filter :description
   # filter :created_at
 
   form do |f|
@@ -21,6 +24,9 @@ ActiveAdmin.register Seed do
       f.input :title
       f.input :latin_title
       f.input :usda
+      f.input :image
+      f.input :description
+      f.input :created_at
     end
     f.actions
   end

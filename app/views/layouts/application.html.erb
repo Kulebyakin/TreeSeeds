@@ -49,11 +49,13 @@
                     <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
                   </div>
                 </li>
-              <% else %>
-                <%= link_to 'Регистрация', new_user_registration_path, class:"btn btn-primary" %>
-                <%= link_to 'Войти', new_user_session_path, class:"btn btn-dark" %>
-              <% end %>
 
+              <% else %>
+                <div>
+                  <%= link_to 'Регистрация', new_user_registration_path, class:"btn btn-primary" %>
+                  <%= link_to 'Войти', new_user_session_path, class:"btn btn-dark" %>
+                </div>
+              <% end %>
             </ul>
           </div>
         </div>

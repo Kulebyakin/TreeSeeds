@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/logout' => "devise/sessions#destroy"
   end
+  
+  post 'cart' => "cart#index"
 
   resources :seeds
   root to: 'seeds#index'

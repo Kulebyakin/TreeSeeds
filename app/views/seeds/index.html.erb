@@ -13,6 +13,7 @@
         <%# link_to 'Edit', edit_seed_path(seed) %>
         <%# link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
       <%# </p> %>
+      <button class="btn btn-success btn-sm" onClick="add_to_cart(<%= seed.id %>)">Add to cart</button>
     </div>
     <% end %>
   <% end %>

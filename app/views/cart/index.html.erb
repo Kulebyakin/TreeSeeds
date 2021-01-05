@@ -1,13 +1,13 @@
-<p class="display-4">Your Cart</p>
+<h2 class="my-3">Ваша корзина</h2>
 <div id="cart">
 	<table class="table table-stripped">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Count</th>
-				<th>Qty</th>
+				<th>Наименование</th>
+				<th>Цена</th>
+				<th>Количество</th>
+				<th>Сумма</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,7 +30,7 @@
 		<% end %>
 			<tr>
 				<td></td>
-				<td><em>Total</em></td>
+				<td><em>Всего</em></td>
 				<td><em><%# total_price %></em></td>
 				<td><em><%# total_count %></em></td>
 				<td><em><%# total_qty %></em></td>
@@ -44,21 +44,21 @@
 		<input type="hidden" name="order[order_input]" value="<%= @order_input %>" />
 
 		<div class="form-group">
-			<label>Name:</label>
-			<input type="text" name="order[name]" class="form-control" placeholder="Your name" value="">
+			<label>ФИО:</label>
+			<input type="text" name="order[name]" class="form-control" placeholder="Ваше имя" value="">
 		</div>
 
 		<div class="form-group">
-			<label>Phone:</label>
-			<input type="text" name="order[phone]" class="form-control" placeholder="Your phone" value="">
+			<label>Телефон:</label>
+			<input type="text" name="order[phone]" class="form-control" placeholder="Ваш телефон" value="">
 		</div>
 
 		<div class="form-group">
-			<label>Address:</label>
-			<textarea name="order[address]" class="form-control" placeholder="Delivery address" value=""></textarea>
+			<label>Адрес:</label>
+			<textarea name="order[address]" class="form-control" placeholder="Адрес доставки" value=""></textarea>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Place order</button>
-		<button type="submit" class="btn btn-danger" onclick="return cancel_order()">Cancel</button>
+		<button type="submit" class="btn btn-primary">Разместить заказ</button>
+		<button type="submit" class="btn btn-danger" onclick="return cancel_order()">Отменить заказ (очистить корзину)</button>
 	</form>
 </div>

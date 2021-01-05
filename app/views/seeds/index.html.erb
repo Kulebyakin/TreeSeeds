@@ -2,9 +2,10 @@
 <div class="row">
   <% @seeds.each do |seed| %>
     <% if seed.image? %>
-    <div class="col-md-3">
+    <div class="col-md-3 p-0">
       <%= link_to(image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
-      <p><%= seed.title %></p>
+      <button class="btn btn-success btn-sm my-1" onClick="add_to_cart(<%= seed.id %>)">В корзину</button>
+      <p class="text-left"><%= seed.title %></p>
       <%# seed.latin_title %>
       <%# seed.usda %>
       <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>
@@ -13,7 +14,7 @@
         <%# link_to 'Edit', edit_seed_path(seed) %>
         <%# link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
       <%# </p> %>
-      <button class="btn btn-success btn-sm" onClick="add_to_cart(<%= seed.id %>)">Add to cart</button>
+      
     </div>
     <% end %>
   <% end %>

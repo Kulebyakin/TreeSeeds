@@ -1,11 +1,11 @@
-<h1 class="my-3">Seeds</h1>
+<p class="h2 my-3">Семена деревьев</p>
 <div class="row">
   <% @seeds.each do |seed| %>
     <% if seed.image? %>
     <div class="col-md-3 p-0">
       <%= link_to(image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
-      <button class="btn btn-success btn-sm my-1" onClick="add_to_cart(<%= seed.id %>)">В корзину</button>
-      <p class="text-left"><%= seed.title %></p>
+      <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= seed.id %>)">В корзину</button>
+      <p class="text-left" style="font-family: 'Roboto', sans-serif;"><%= seed.title %></p>
       <%# seed.latin_title %>
       <%# seed.usda %>
       <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>

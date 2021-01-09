@@ -1,23 +1,33 @@
 <p class="h2 my-3">Семена деревьев</p>
 <div class="row">
-  <% @seeds.each do |seed| %>
-    <% if seed.image? %>
-    <div class="col-md-3 p-0">
-      <%= link_to(image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
-      <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= seed.id %>)">В корзину</button>
-      <p class="text-left" style="font-family: 'Roboto', sans-serif;"><%= seed.title %></p>
-      <%# seed.latin_title %>
-      <%# seed.usda %>
-      <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>
-      <%# <p>
-        <%# link_to 'Show', seed %>
-        <%# link_to 'Edit', edit_seed_path(seed) %>
-        <%# link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <%# </p> %>
-      
+  <div class="col-md-3 p-0"></div>
+  <div class="col-md-9 p-0">
+    <div class="row">
+      <% @seeds.each do |seed| %>
+        <% if seed.image? %>
+        
+          <div class="col-md-3 p-0">
+            <%= link_to(image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
+            
+            <p class="text-left m-1" style="font-family: 'Roboto', sans-serif;"><%= seed.title %><br>
+            <% seed.prices.each do |price| %>
+              <%= price.amount %>
+              <%= price.unit %>
+              <%= price.price %> руб. <br>
+            <% end %></p>
+            <%# seed.usda %>
+            <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>
+            <%# <p>
+              <%# link_to 'Show', seed %>
+              <%# link_to 'Edit', edit_seed_path(seed) %>
+              <%# link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%# </p> %>
+            <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= seed.id %>)">В корзину</button>
+          </div>
+        <% end %>
+      <% end %>
     </div>
-    <% end %>
-  <% end %>
+  </div>
 </div>
 <br>
 

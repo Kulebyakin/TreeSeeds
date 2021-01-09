@@ -21,6 +21,13 @@ ActiveAdmin.register_page "Dashboard" do
             end
           end
         end
+        panel "Recent prices" do
+          ul do
+            Price.last(10).reverse.map do |price|
+              li link_to(price.seed.title, admin_price_path(price)) 
+            end
+          end
+        end
       end
     end
   end # content

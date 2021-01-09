@@ -14,6 +14,14 @@
       <%= @seed.usda %>
     </p>
     <p>
+    <% @seed.prices.each do |price| %>
+      <%= price.amount %>
+      <%= price.unit %>
+      <%= price.price %> руб. <br>
+    <% end %>
+    <button class="btn btn-success btn-sm my-1" onClick="add_to_cart(<%= @seed.id %>)">В корзину</button>
+    </p>
+    <p>
       <strong>Описание:</strong> 
       <%= simple_format(@seed.description) %>
     </p>

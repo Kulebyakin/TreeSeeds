@@ -1,33 +1,33 @@
 function add_to_cart(id)
 {
-	var key = 'product_' + id;
-	var x = window.localStorage.getItem(key);
-	x = x * 1 + 1;
-	window.localStorage.setItem(key, x);
+	var json = JSON.parse(localStorage.getItem("item"));
+
+	if (json != null) 
+	{
+		var present = false
+		json.forEach(function(item, i, array) {
+			if (item["id"] == id) 
+			{
+				item["count"] = item["count"] * 1 + 1;
+				present = true
+			}
+		});
+
+		if (present == false) {
+			json.push({"id": id, "count":1});
+		};
+	} else 
+	{
+		var json = [{
+				"id": id,
+				"count": 1
+		}]; 
+	};
+	window.localStorage.setItem("item", JSON.stringify(json));
 
 	update_orders_input();
 	update_orders_button();
 }
-
-// function add_to_cart(id)
-// {
-	// var cart = {
-	// 	id: {
-	// 			count: 0
-	// 		}
-	// 	}
-	// };
-	// localStorage.setItem("item", JSON.stringify(cart));
-	// var item = JSON.parse(localStorage.getItem("citem"));
-
-	// console.log(item);
-
-	// item = item * 1 + 1;
-	// window.localStorage.setItem("item", JSON.stringify(cart));
-
-	// update_orders_input();
-	// update_orders_button();
-// }
 
 function update_orders_input()
 {
@@ -50,21 +50,21 @@ function update_orders_button()
 function cart_number_of_items()
 {
 	var sum = 0;
-	for (var i = 0; i < localStorage.length; i++)
+	var json = JSON.parse(localStorage.getItem("item"));
+
+	if (json != null) 
 	{
-    	sum = sum * 1 + localStorage.getItem(localStorage.key(i)) * 1;
-	}
+		json.forEach(function(item, i, array) {
+			sum = sum * 1 + item["count"] * 1;
+		});
+	};
+
 	return sum;
 }
 
 function cart_orders()
 {
-	var orders = '';
-	for (var i = 0; i < localStorage.length; i++)
-	{
-		order = localStorage.key(i) + '=' + localStorage.getItem(localStorage.key(i)) + ',';
-    	orders = orders + order;
-	}
+	var orders = localStorage.getItem("item");
 	return orders;
 }
 

@@ -1,5 +1,5 @@
 ActiveAdmin.register Seed do
-  permit_params :title, :latin_title, :description, :usda, :image
+  permit_params :title, :latin_title, :description, :usda, image: []
 
   index do
     selectable_column
@@ -19,12 +19,12 @@ ActiveAdmin.register Seed do
   # filter :description
   # filter :created_at
 
-  form do |f|
+  form html: { multipart: true } do |f|
     f.inputs do
       f.input :title
       f.input :latin_title
       f.input :usda
-      f.input :image
+      f.input :image, as: :file, input_html: { multiple: true }
       f.input :description
       f.input :created_at
     end

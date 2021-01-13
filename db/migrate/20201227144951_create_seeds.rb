@@ -5,7 +5,7 @@ class CreateSeeds < ActiveRecord::Migration[6.1]
       t.string :latin_title
       t.string :description
       t.string :usda
-      t.string :image
+      t.json :image
 
       t.timestamps
     end

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_073117) do
     t.string "latin_title"
     t.string "description"
     t.string "usda"
-    t.string "image"
+    t.json "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,4 +1,5 @@
 class Seed < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  mount_uploaders :image, ImageUploader
+  serialize :image
   has_many :prices
 end

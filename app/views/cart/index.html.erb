@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% total_price = 0 %>
+		
 		<% total_count = 0 %>
 		<% total_qty = 0 %>
 
@@ -19,16 +19,11 @@
 			<tr>
 				<td><%= i+1 %></td>
 				<td><%= item["id"].title %></td>
-				<td>
-					<% item["id"].prices.each do |price| %>
-						<%= price.price %></td>
-						<%# total_price += price.price %>
-						<td><%= item["count"] %></td>
-						<% total_qty += price.price.to_i * item["count"].to_i %>
-						<td><%= price.price.to_i * item["count"].to_i %>
-					<% end %>
-			
+				<td><%= item["price"] %></td>
+				<td><%= item["count"] %></td>
+				<td><%= item["price"].to_i * item["count"].to_i %>	
 			</tr>
+			<% total_qty += item["price"].to_i * item["count"].to_i %>
 			<% total_count += item["count"].to_i %>
 		<% end %>
 			<tr>

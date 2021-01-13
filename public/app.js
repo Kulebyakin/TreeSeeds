@@ -1,4 +1,4 @@
-function add_to_cart(id)
+function add_to_cart(id, price)
 {
 	var json = JSON.parse(localStorage.getItem("item"));
 
@@ -8,18 +8,22 @@ function add_to_cart(id)
 		json.forEach(function(item, i, array) {
 			if (item["id"] == id) 
 			{
-				item["count"] = item["count"] * 1 + 1;
-				present = true
+				if (item["price"] == price)
+				{
+					item["count"] = item["count"] * 1 + 1;
+					present = true
+				}
 			}
 		});
 
 		if (present == false) {
-			json.push({"id": id, "count":1});
+			json.push({"id": id, "price": price, "count":1});
 		};
 	} else 
 	{
 		var json = [{
 				"id": id,
+				"price": price,
 				"count": 1
 		}]; 
 	};
@@ -31,7 +35,7 @@ function add_to_cart(id)
 
 function update_orders_input()
 {
-	var orders = cart_orders();
+	var orders = localStorage.getItem("item");
 	$('#orders_input').val(orders);
 }
 
@@ -60,12 +64,6 @@ function cart_number_of_items()
 	};
 
 	return sum;
-}
-
-function cart_orders()
-{
-	var orders = localStorage.getItem("item");
-	return orders;
 }
 
 function cancel_order()

@@ -9,12 +9,14 @@
           <div class="col-md-3 p-0">
             <%= link_to(image_tag(seed.image.thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
             
-            <p class="text-left m-1" style="font-family: 'Roboto', sans-serif;"><%= seed.title %><br>
+            <p class="text-left m-1" style="font-family: 'Roboto', sans-serif;"><%= seed.title %></p>
             <% seed.prices.each do |price| %>
+              <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= seed.id %>, <%= price.price %>)">В корзину</button>
               <%= price.amount %>
               <%= price.unit %>
-              <%= price.price %> руб. <br>
-            <% end %></p>
+              <%= price.price %> р. <br>
+              
+            <% end %>
             <%# seed.usda %>
             <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>
             <%# <p>
@@ -22,7 +24,7 @@
               <%# link_to 'Edit', edit_seed_path(seed) %>
               <%# link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
             <%# </p> %>
-            <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= seed.id %>)">В корзину</button>
+            
           </div>
         <% end %>
       <% end %>

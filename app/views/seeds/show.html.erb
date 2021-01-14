@@ -4,12 +4,12 @@
 
 <div class="row">
   <div class="col-md-5 my-3">
-    <p>
-      <%= link_to(image_tag(@seed.image[0].thumb.url, alt: @seed.title, class: "img-fluid"), @seed.image[0].url) if @seed.image? %>
-    </p>
-    <p>
-      <%= link_to(image_tag(@seed.image[1].thumb100.url, alt: @seed.title, class: "img-fluid"), @seed.image[1].url) if @seed.image? %>
-    </p>
+    <p><%= link_to(image_tag(@seed.image[0].thumb.url, alt: @seed.title, class: "img-fluid"), @seed.image[0].url) %></p>
+    <%  if @seed.image.length > 1 %>
+      <% @seed.image.each_with_index do |image, i| %>
+        <%= link_to(image_tag(image.thumb100.url, class: "img-fluid p-1"), image.url) if i > 0 %>
+      <% end %>
+    <% end %>
   </div>
   <div class="col-md-7 my-3">
     <p>

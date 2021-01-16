@@ -7,7 +7,7 @@
 				<th>Наименование</th>
 				<th>Цена</th>
 				<th>Количество</th>
-				<th>Сумма</th>
+				<th colspan="2">Сумма</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,7 +21,8 @@
 				<td><%= item["id"].title %></td>
 				<td><%= item["price"] %></td>
 				<td><%= item["count"] %></td>
-				<td><%= item["price"].to_i * item["count"].to_i %>	
+				<td><%= item["price"].to_i * item["count"].to_i %></td>
+				<td width="50"><%= link_to(image_tag("/bin.svg", width: "25", class: "m-0"), "javascript:delete_item(#{item["id"].id}, #{item["price"]})") %></td>
 			</tr>
 			<% total_qty += item["price"].to_i * item["count"].to_i %>
 			<% total_count += item["count"].to_i %>
@@ -29,7 +30,7 @@
 			<tr>
 				<td></td>
 				<td><strong>Всего</strong></td>
-				<td><strong></td>
+				<td></td>
 				<td><strong><%= total_count %></strong></td>
 				<td><strong><%= total_qty %></strong></td>
 			</tr>

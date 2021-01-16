@@ -77,3 +77,25 @@ function cancel_order()
 	// $('#cart').text('Your cart is empry! Please add items in your cart.');
 	return false;
 }
+
+function delete_item(id, price)
+{
+	var json = JSON.parse(localStorage.getItem("item"));
+
+	if (json != null) 
+	{
+		json.forEach(function(item, i, array) {
+			if (item["id"] == id) 
+			{
+				if (item["price"] == price)
+				{
+					json.splice(i, 1);
+				}
+			}
+		});
+	};
+	window.localStorage.setItem("item", JSON.stringify(json));
+
+	update_orders_input();
+	update_orders_button();
+}

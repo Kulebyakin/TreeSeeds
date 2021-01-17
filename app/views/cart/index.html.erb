@@ -1,5 +1,5 @@
 <h2 class="my-3">Ваша корзина</h2>
-<div id="cart">
+<div>
 	<table class="table table-stripped">
 		<thead>
 			<tr>
@@ -10,7 +10,7 @@
 				<th colspan="2">Сумма</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody id="cart" data-url="<%= @items.to_json %>">
 		
 		<% total_count = 0 %>
 		<% total_qty = 0 %>
@@ -31,8 +31,8 @@
 				<td></td>
 				<td><strong>Всего</strong></td>
 				<td></td>
-				<td><strong><%= total_count %></strong></td>
-				<td><strong><%= total_qty %></strong></td>
+				<td id="total_count"><strong><%= total_count %></strong></td>
+				<td id="total_qty"><strong><%= total_qty %></strong></td>
 			</tr>
 		</tbody>
 	</table>

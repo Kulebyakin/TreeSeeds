@@ -20,9 +20,13 @@
 				<td><%= i+1 %></td>
 				<td><%= item["id"].title %></td>
 				<td><%= item["price"] %></td>
-				<td><%= item["count"] %></td>
+				<td>
+					<%= link_to(image_tag("/square_remove.png", width: "25", class: "m-0"), "javascript:decrease_count(#{item["id"].id}, #{item["price"]})") %>
+					<span class="mx-2" id="count_<%= item["id"].id %>_<%= item["price"] %>"><%= item["count"] %></span>
+					<%= link_to(image_tag("/square_add.png", width: "25", class: "m-0"), "javascript:increase_count(#{item["id"].id}, #{item["price"]})") %>
+				</td>
 				<td><%= item["price"].to_i * item["count"].to_i %></td>
-				<td width="50"><%= link_to(image_tag("/bin.svg", width: "25", class: "m-0"), "javascript:delete_item(#{item["id"].id}, #{item["price"]})") %></td>
+				<td width="50"><%= link_to(image_tag("/bin.png", width: "25", class: "m-0"), "javascript:delete_item(#{item["id"].id}, #{item["price"]})") %></td>
 			</tr>
 			<% total_qty += item["price"].to_i * item["count"].to_i %>
 			<% total_count += item["count"].to_i %>

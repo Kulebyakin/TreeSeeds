@@ -22,10 +22,11 @@
 				<td><%= item["price"] %></td>
 				<td>
 					<%= link_to(image_tag("/square_remove.png", width: "20", class: "m-0"), "javascript:decrease_count(#{item["id"].id}, #{item["price"]})") %>
-					<input type="number" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" id="count_<%= item["id"].id %>_<%= item["price"] %>" value="<%= item["count"] %>" />
+					<input type="number" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" 
+						id="count_<%= item["id"].id %>_<%= item["price"] %>" value="<%= item["count"] %>" />
 					<%= link_to(image_tag("/square_add.png", width: "20", class: "m-0"), "javascript:increase_count(#{item["id"].id}, #{item["price"]})") %>
 				</td>
-				<td><%= item["price"].to_i * item["count"].to_i %></td>
+				<td id="qty_<%= item["id"].id %>_<%= item["price"] %>"><%= item["price"].to_i * item["count"].to_i %></td>
 				<td width="50"><%= link_to(image_tag("/bin.png", width: "20", class: "m-0"), "javascript:delete_item(#{item["id"].id}, #{item["price"]})") %></td>
 			</tr>
 			<% total_qty += item["price"].to_i * item["count"].to_i %>

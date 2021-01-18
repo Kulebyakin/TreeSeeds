@@ -103,7 +103,8 @@ function delete_item(id, price)
 								item1.price + '</td><td><a href="javascript:decrease_count(' + 
 								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_remove.png" /></a><input type="number" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" id="count_' + 
 								item1.id + '_' + item1.price + '" value="' + item1.count + '" /><a href="javascript:increase_count(' + 
-								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_add.png" /></a></td><td>' + 
+								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_add.png" /></a></td><td id="qty_' + 
+								item1.id + '_' + item1.price + '">' + 
 								item1.count * 1 * item1.price * 1 + '</td><td width="50"><a href="javascript:delete_item(' + 
 								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/bin.png" /></a></td></tr>';
 						};
@@ -158,6 +159,7 @@ function decrease_count(id, price)
 				{
 					item.count = item.count * 1 - 1;
 					$('#count_' + item.id + '_' + item.price).val(item.count);
+					$('#qty_' + item.id + '_' + item.price).text(item.count * item.price);
 					window.localStorage.setItem("item", JSON.stringify(json));
 				}
 			}
@@ -181,6 +183,7 @@ function increase_count(id, price)
 			{
 				item.count = item.count * 1 + 1;
 				$('#count_' + item.id + '_' + item.price).val(item.count);
+				$('#qty_' + item.id + '_' + item.price).text(item.count * item.price);
 			}
 		});
 		window.localStorage.setItem("item", JSON.stringify(json));

@@ -101,11 +101,11 @@ function delete_item(id, price)
 							
 							order_table += '<tr><td>' + (i1 * 1 + 1) + '</td><td>' + item2.id.title + '</td><td>' + 
 								item1.price + '</td><td><a href="javascript:decrease_count(' + 
-								item1.id + ', ' + item1.price + ')"><img width="25" class="m-0" src="/square_remove.png" /></a><span class="mx-3" id="count_' + 
-								item1.id + '_' + item1.price + '">' + item1.count + '</span><a href="javascript:increase_count(' + 
-								item1.id + ', ' + item1.price + ')"><img width="25" class="m-0" src="/square_add.png" /></a></td><td>' + 
+								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_remove.png" /></a><input type="number" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" id="count_' + 
+								item1.id + '_' + item1.price + '" value="' + item1.count + '" /><a href="javascript:increase_count(' + 
+								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_add.png" /></a></td><td>' + 
 								item1.count * 1 * item1.price * 1 + '</td><td width="50"><a href="javascript:delete_item(' + 
-								item1.id + ', ' + item1.price + ')"><img width="25" class="m-0" src="/bin.png" /></a></td></tr>';
+								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/bin.png" /></a></td></tr>';
 						};
 					});
 				});
@@ -157,7 +157,7 @@ function decrease_count(id, price)
 				else
 				{
 					item.count = item.count * 1 - 1;
-					$('#count_' + item.id + '_' + item.price).text(item.count);
+					$('#count_' + item.id + '_' + item.price).val(item.count);
 					window.localStorage.setItem("item", JSON.stringify(json));
 				}
 			}
@@ -180,7 +180,7 @@ function increase_count(id, price)
 			if (item.id == id && item.price == price) 
 			{
 				item.count = item.count * 1 + 1;
-				$('#count_' + item.id + '_' + item.price).text(item.count);
+				$('#count_' + item.id + '_' + item.price).val(item.count);
 			}
 		});
 		window.localStorage.setItem("item", JSON.stringify(json));

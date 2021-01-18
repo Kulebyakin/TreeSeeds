@@ -100,15 +100,18 @@ function delete_item(id, price)
 						if (item2.id.id == item1.id && item2.price == item1.price) {
 							
 							order_table += '<tr><td>' + (i1 * 1 + 1) + '</td><td>' + item2.id.title + '</td><td>' + 
-								item1.price + '</td><td>' + item1.count + '</td><td>' + 
+								item1.price + '</td><td><a href="javascript:decrease_count(' + 
+								item1.id + ', ' + item1.price + ')"><img width="25" class="m-0" src="/square_remove.png" /></a><span class="mx-3" id="count_' + 
+								item1.id + '_' + item1.price + '">' + item1.count + '</span><a href="javascript:increase_count(' + 
+								item1.id + ', ' + item1.price + ')"><img width="25" class="m-0" src="/square_add.png" /></a></td><td>' + 
 								item1.count * 1 * item1.price * 1 + '</td><td width="50"><a href="javascript:delete_item(' + 
-								item1.id + ', ' + item1.price + ')"><img width="25" class="m-0" src="/bin.svg" /></a></td></tr>';
+								item1.id + ', ' + item1.price + ')"><img width="25" class="m-0" src="/bin.png" /></a></td></tr>';
 						};
 					});
 				});
 				
-				order_table += '<tr><td></td><td><strong>Всего</strong></td><td></td><td><strong>' + 
-				cart_number_of_items() + '</strong></td><td><strong>' + sum_of_all_items() + '</strong></td></tr>';
+				order_table += '<tr><td></td><td><strong>Всего</strong></td><td></td><td id="total_count"><strong>' + 
+				cart_number_of_items() + '</strong></td><td id="total_qty"><strong>' + sum_of_all_items() + '</strong></td></tr>';
 
 				$('#cart').html(order_table);
 
@@ -120,8 +123,6 @@ function delete_item(id, price)
 		});
 	};
 	
-	cart_number_of_items()
-	sum_of_all_items();
 	update_orders_input();
 	update_orders_button();
 }
@@ -138,4 +139,65 @@ function sum_of_all_items()
 		});
 	};
 	return qty;
+}
+
+function decrease_count(id, price)
+{
+	var json = JSON.parse(localStorage.getItem("item"));
+	
+	if (json != null) 
+	{
+		json.forEach(function(item, i, array) {
+			if (item.id == id && item.price == price) 
+			{
+				if (item.count <= 1)
+				{
+					delete_item(item.id, item.price);
+				} 
+				else
+				{
+					item.count = item.count * 1 - 1;
+					$('#count_' + item.id + '_' + item.price).text(item.count);
+					window.localStorage.setItem("item", JSON.stringify(json));
+				}
+			}
+		});
+	};
+	
+	update_cart_number_of_items();
+	update_sum_of_all_items();
+	update_orders_input();
+	update_orders_button();
+}
+
+function increase_count(id, price)
+{
+	var json = JSON.parse(localStorage.getItem("item"));
+	
+	if (json != null) 
+	{
+		json.forEach(function(item, i, array) {
+			if (item.id == id && item.price == price) 
+			{
+				item.count = item.count * 1 + 1;
+				$('#count_' + item.id + '_' + item.price).text(item.count);
+			}
+		});
+		window.localStorage.setItem("item", JSON.stringify(json));
+	};
+	
+	update_cart_number_of_items();
+	update_sum_of_all_items();
+	update_orders_input();
+	update_orders_button();
+}
+
+function update_cart_number_of_items()
+{
+	$('#total_count').html('<strong>' + cart_number_of_items() + '</strong>');
+}
+
+function update_sum_of_all_items()
+{
+	$('#total_qty').html('<strong>' + sum_of_all_items() + '</strong>');
 }

@@ -100,9 +100,9 @@ function delete_item(id, price)
 						if (item2.id.id == item1.id && item2.price == item1.price) {
 							
 							order_table += '<tr><td>' + (i1 * 1 + 1) + '</td><td>' + item2.id.title + '</td><td>' + 
-								item1.price + '</td><td><a href="javascript:decrease_count(' + 
-								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_remove.png" /></a><input type="number" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" id="count_' + 
-								item1.id + '_' + item1.price + '" value="' + item1.count + '" /><a href="javascript:increase_count(' + 
+								item1.price + '</td><td class="px-0 text-right" width="20"><a href="javascript:decrease_count(' + 
+								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_remove.png" /></a></td><td class="px-0" width="30"><input type="number" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" id="count_' + 
+								item1.id + '_' + item1.price + '" value="' + item1.count + '" /></td><td class="px-0"><a href="javascript:increase_count(' + 
 								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_add.png" /></a></td><td id="qty_' + 
 								item1.id + '_' + item1.price + '">' + 
 								item1.count * 1 * item1.price * 1 + '</td><td width="50"><a href="javascript:delete_item(' + 
@@ -111,8 +111,8 @@ function delete_item(id, price)
 					});
 				});
 				
-				order_table += '<tr><td></td><td><strong>Всего</strong></td><td></td><td id="total_count"><strong>' + 
-				cart_number_of_items() + '</strong></td><td id="total_qty"><strong>' + sum_of_all_items() + '</strong></td></tr>';
+				order_table += '<tr><td></td><td><strong>Всего</strong></td><td></td><td></td><td class="text-center" id="total_count"><strong>' + 
+				cart_number_of_items() + '</strong></td><td></td><td id="total_qty"><strong>' + sum_of_all_items() + '</strong></td></tr>';
 
 				$('#cart').html(order_table);
 

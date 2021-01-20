@@ -43,24 +43,41 @@
 	</table>
 
 
-	<form action="/order" method="POST">
 
-		<input type="hidden" name="order[order]" value="<%= @order_input %>" />
-		<input type="hidden" name="order[status]" value="placed" />
+	<%= form_with(model: @order) do |form| %>
+		<% if @order.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(Order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+				<ul>
+					<% @order.errors.each do |error| %>
+						<li><%= error.full_message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+
+		<%= form.hidden_field :order, value: @order_input %>
+		<%= form.hidden_field :status, value: "placed" %>
 
 		<div class="form-group">
-			<label>ФИО:</label>
-			<input type="text" name="order[full_name]" class="form-control" placeholder="Ваше имя" value="">
+			<%= form.label "ФИО:" %>
+			<%= form.text_field :full_name, class: "form-control", placeholder: "Введите ФИО" %>
 		</div>
 
 		<div class="form-group">
-			<label>Телефон:</label>
-			<input type="text" name="order[phone]" class="form-control" placeholder="Ваш телефон" value="">
+			<%= form.label "Телефон:" %>
+			<%= form.text_field :phone, class: "form-control", placeholder: "Ваш телефон" %>
 		</div>
+
+			<%# <%= form.label "Выберете регион " %>
+			<%# <%= form.collection_select(region_id, region_id.title, :id, :title) %>
 
 		<div class="form-group">
 			<label>Регион РФ:</label>
 			<select name="order[region_id]" class="custom-select" aria-label="Default select example">
+
 				<option selected>Выберете регион</option>
 				<% @regions.each do |region| %>
 					<option value="<%= region.id %>"><%= region.title %></option>
@@ -69,16 +86,18 @@
 		</div>
 
 		<div class="form-group">
-			<label>Почтовый индекс:</label>
-			<input type="text" name="order[zip]" class="form-control" placeholder="Введите индекс" value=""></textarea>
+			<%= form.label "Почтовый индекс:" %>
+			<%= form.text_field :zip, class: "form-control", placeholder: "Введите индекс" %>
 		</div>
 
 		<div class="form-group">
-			<label>Адрес:</label>
-			<input type="text" name="order[address]" class="form-control" placeholder="Адрес доставки" value=""></textarea>
+			<%= form.label "Адрес:" %>
+			<%= form.text_field :address, class: "form-control", placeholder: "Адрес доставки" %>
 		</div>
 
-		<button type="submit" class="btn btn-primary">Разместить заказ</button>
-		<button type="submit" class="btn btn-danger" onclick="return cancel_order()">Очистить корзину</button>
-	</form>
+		<div class="actions">
+			<%= form.submit "Разместить заказ", class: "btn btn-primary" %>
+			<%= form.submit "Очистить корзину", class: "btn btn-danger", onclick: "return cancel_order()" %>
+		</div>
+	<% end %>
 </div>

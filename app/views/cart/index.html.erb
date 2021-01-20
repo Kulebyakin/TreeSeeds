@@ -45,7 +45,8 @@
 
 	<form action="/order" method="POST">
 
-		<input type="hidden" name="order[order_input]" value="<%= @order_input %>" />
+		<input type="hidden" name="order[order]" value="<%= @order_input %>" />
+		<input type="hidden" name="order[status]" value="placed" />
 
 		<div class="form-group">
 			<label>ФИО:</label>
@@ -59,7 +60,7 @@
 
 		<div class="form-group">
 			<label>Регион РФ:</label>
-			<select class="custom-select" aria-label="Default select example">
+			<select name="order[region_id]" class="custom-select" aria-label="Default select example">
 				<option selected>Выберете регион</option>
 				<% @regions.each do |region| %>
 					<option value="<%= region.id %>"><%= region.title %></option>

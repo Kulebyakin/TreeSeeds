@@ -12,7 +12,7 @@ class CartController < ApplicationController
         item["id"] = Seed.find(item["id"])
       end
     end
-    
+    @regions = Region.all()
   end
 
 end

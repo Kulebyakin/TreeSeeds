@@ -1,0 +1,29 @@
+<h2 class="my-3">Вашы заказы</h2>
+<div>
+	<table class="table table-stripped">
+		<thead>
+			<tr>
+				<th>ФИО</th>
+				<th>Телефон</th>
+				<th>Регион</th>
+				<th>Адрес</th>
+				<th>Индекс</th>
+				<th>Статус</th>
+				<th>Заказ</th>
+			</tr>
+		</thead>
+		<tbody>
+      <% @orders.each do |order| %>
+		  	<tr>
+          <td><%= order.full_name %></td>
+          <td><%= order.phone %></td>
+          <td><%= order.region.title %></td>
+          <td><%= order.address %></td>
+          <td><%= order.zip %></td>
+          <td><%= order.status %></td>
+          <td><%= order.order %></td>
+			  </tr>
+      <% end %>
+
+		</tbody>
+	</table>

@@ -12,7 +12,8 @@ class CartController < ApplicationController
         item["id"] = Seed.find(item["id"])
       end
     end
-    @regions = Region.all()
+    @regions = Region.all
+    @order = Order.new
   end
 
 end

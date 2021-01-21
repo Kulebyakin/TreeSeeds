@@ -204,3 +204,10 @@ function update_sum_of_all_items()
 {
 	$('#total_qty').html('<strong>' + sum_of_all_items() + '</strong>');
 }
+
+function clear_cart() 
+{
+	window.localStorage.clear();
+	update_orders_input();
+	update_orders_button();
+}

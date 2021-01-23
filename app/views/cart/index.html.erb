@@ -59,6 +59,7 @@
 
 
 		<%= form.hidden_field :order, value: @order_input %>
+		<%= form.hidden_field :user_id, value: current_user.id %>
 		<%= form.hidden_field :status, value: "placed" %>
 
 		<div class="form-group">

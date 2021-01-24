@@ -117,7 +117,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  config.root_to = 'seeds#index'
+  config.root_to = 'orders#index'
 
   # == Admin Comments
   #

@@ -7,13 +7,36 @@ ActiveAdmin.register Order do
   #
   permit_params :full_name, :phone, :region_id, :address, :zip, :order, :status
 
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:full_name, :phone, :region_id, :address, :zip, :order, :status]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  index do
+    selectable_column
+    id_column
+    column :full_name
+    column :phone
+    column :region_id
+    column :address
+    column :zip
+    column :order
+    column :status
+    actions
+  end
+
+  filter :full_name
+  filter :region_id
+  filter :status
+  # filter :description
+  # filter :created_at
+
+  form html: { multipart: true } do |f|
+    f.inputs do
+      f.input :full_name
+      f.input :phone
+      f.input :region_id
+      f.input :address
+      f.input :zip
+      f.input :order, as: :jsonb
+      f.input :status
+    end
+    f.actions
+  end
+
 end

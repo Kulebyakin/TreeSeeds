@@ -23,8 +23,8 @@ Seed.create title: 'Дуб монгольский', latin_title: 'Quercus mongol
 Seed.create title: 'Дуб черешчатый', latin_title: 'Quercus robur', usda: '3'
 Seed.create title: 'Калина Саржента', latin_title: 'Viburnum sargentii', usda: '3'
 Seed.create title: 'Катальпа яйцевидная', latin_title: 'Catalpa ovata', usda: '4'
-Seed.create title: 'Кедр корейский', latin_title: 'Pinus koraiensis', usda: '3'
-Seed.create title: 'Кедр сибирский', latin_title: 'Pinus sibirica', usda: '3'
+Seed.create title: 'Кедр корейский', latin_title: 'Pinus koraiensis', usda: '3', conifers: true
+Seed.create title: 'Кедр сибирский', latin_title: 'Pinus sibirica', usda: '3', conifers: true
 Seed.create title: 'Кизильник блестящий', latin_title: 'Cotoneaster lucidus', usda: '3'
 Seed.create title: 'Клён Гинала (приречный)', latin_title: 'Acer ginnala', usda: '2'
 Seed.create title: 'Клён зеленокорый', latin_title: 'Acer tegmentosum', usda: '3'
@@ -45,7 +45,7 @@ Seed.create title: 'Черемуха Маака', latin_title: 'Padus maackii', 
 Seed.create title: 'Шиповник морщинистый', latin_title: 'Rosa rugosa', usda: '3'
 Seed.create title: 'Элеутерококк колючий', latin_title: 'Eleutherococcus senticosus', usda: '4'
 Seed.create title: 'Яблоня ягодная', latin_title: 'Malus baccata', usda: '3'
-Seed.create title: 'Кедровый стланник', latin_title: 'Pinus pumila', usda: '2'
+Seed.create title: 'Кедровый стланник', latin_title: 'Pinus pumila', usda: '2', conifers: true
 
 Price.create seed_id: '1', amount: '10', unit: 'шт.', price: '100'
 Price.create seed_id: '2', amount: '30', unit: 'шт.', price: '100'

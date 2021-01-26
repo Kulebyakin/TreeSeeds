@@ -7,6 +7,17 @@ class SeedsController < ApplicationController
     @seeds = Seed.all().order(id: :asc)
   end
 
+  def topic
+    if params[:topic] == "conifers"
+      @seeds = Seed.all.where(conifers: true).order(id: :asc)
+    elsif params[:topic] == "deciduous"
+      @seeds = Seed.all.where(conifers: false).order(id: :asc)
+    else
+      return redirect_to root_path, notice: "Ну-ка не балуй!"
+    end
+    render 'index'
+  end
+
   # GET /seeds/1
   # GET /seeds/1.json
   def show

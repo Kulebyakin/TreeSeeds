@@ -18,10 +18,14 @@
     </p>
     <p>
     <% @seed.prices.each do |price| %>
-      <button class="btn btn-success btn-sm my-1" onClick="add_to_cart(<%= @seed.id %>, <%= price.price %>)">В корзину</button>
-      <%= price.amount %>
-      <%= price.unit %>
-      <%= price.price %> руб. <br>
+      <% if @seed.availability == true %>
+        <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= @seed.id %>, <%= price.price %>)">В корзину</button>
+        <%= price.amount %>
+        <%= price.unit %>
+        <%= price.price %> р. <br>
+      <% else %>
+        <button class="btn btn-secondary btn-sm m-1" disabled>Нет в наличии</button>
+      <% end %>
     <% end %>
     
     </p>

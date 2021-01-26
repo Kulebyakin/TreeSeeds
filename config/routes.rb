@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   
   post 'cart' => "cart#index"
 
+  get 'seeds/:id', to: 'seeds#show', constraints: { id: /\d+/ }
+  get 'seeds/:topic', to: 'seeds#topic'
+
+
   resources :seeds
   resources :orders
   root to: 'seeds#index'

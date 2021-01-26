@@ -61,7 +61,7 @@
                   </a>
                   
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <%= link_to 'Мои заказы', orders_path, class:"dropdown-item" if current_user.orders.present? %>
+                    <%= link_to 'Мои заказы', orders_path, class:"dropdown-item" if current_user.orders.any? %>
                     <%= link_to 'Изменить профиль', edit_user_registration_path, class:"dropdown-item" %>
                     <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class:"dropdown-item" %>
                   </div>

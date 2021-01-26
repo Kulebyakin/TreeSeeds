@@ -4,10 +4,10 @@
 
 <div class="row">
   <div class="col-md-5 my-3">
-    <p><%= link_to(image_tag(@seed.image[0].thumb.url, alt: @seed.title, class: "img-fluid"), @seed.image[0].url) %></p>
+    <p><%= image_tag(@seed.image[0].thumb.url, alt: @seed.title, class: "img-fluid", id: "img") %></p>
     <%  if @seed.image.length > 1 %>
       <% @seed.image.each_with_index do |image, i| %>
-        <%= link_to(image_tag(image.thumb100.url, class: "img-fluid p-1"), image.url) if i > 0 %>
+        <%= image_tag(image.thumb100.url, class: "img-fluid p-1", onclick: "javascript:change_img('#{image.thumb.url}');") %>
       <% end %>
     <% end %>
   </div>

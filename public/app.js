@@ -218,3 +218,26 @@ function change_img(image_url)
 	$('#img').attr("src", "../" + image_url);
 	// console.log(image_url);
 }
+
+function change_input_count(id, price, val)
+{
+	var json = JSON.parse(localStorage.getItem("item"));
+	
+	if (json != null) 
+	{
+		json.forEach(function(item, i, array) {
+			if (item.id == id && item.price == price) 
+			{
+				item.count = val;
+				$('#count_' + item.id + '_' + item.price).val(val);
+				$('#qty_' + item.id + '_' + item.price).text(val * item.price);
+			}
+		});
+		window.localStorage.setItem("item", JSON.stringify(json));
+	};
+	
+	update_cart_number_of_items();
+	update_sum_of_all_items();
+	update_orders_input();
+	update_orders_button();
+}

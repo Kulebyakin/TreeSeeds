@@ -7,7 +7,7 @@
           <div class="col-md-2.5 p-0 m-2">
             <%= link_to(image_tag(seed.image[0].thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
             
-            <p class="text-left m-1" style="font-family: 'Roboto', sans-serif;"><%= seed.title %></p>
+            <p class="text-left m-1" style="font-family: 'Roboto', sans-serif; width: 200px;"><%= seed.title %></p>
             <% seed.prices.each do |price| %>
               <% if seed.availability == true %>
                 <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= seed.id %>, <%= price.price %>)">В корзину</button>

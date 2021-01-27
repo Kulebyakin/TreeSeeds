@@ -22,7 +22,9 @@
 				<td><%= item["price"] %></td>
 				<td class="px-0 text-right" width="20"><%= link_to(image_tag("/square_remove.png", width: "20", class: "m-0"), "javascript:decrease_count(#{item["id"].id}, #{item["price"]})") %></td>
 				<td class="px-0" width="30">
-					<input type="number" onchange="change_input_count(<%= item['id'].id %>, <%= item['price'].to_i %>, this.value)" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" 
+					<input type="number" min="1" max="99" maxlength="2" onKeyPress="if(this.value.length==2) return false;" 
+					onKeyUp="if(this.value>99){this.value = this.value.slice(1, 99);}else if(this.value<1){this.value='1';}" 
+					onchange="change_input_count(<%= item['id'].id %>, <%= item['price'].to_i %>, this.value)" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" 
 					id="count_<%= item["id"].id %>_<%= item["price"] %>" value="<%= item["count"] %>" /></td>
 				<td class="px-0"><%= link_to(image_tag("/square_add.png", width: "20", class: "m-0"), "javascript:increase_count(#{item["id"].id}, #{item["price"]})") %></td>
 				<td id="qty_<%= item["id"].id %>_<%= item["price"] %>"><%= item["price"].to_i * item["count"].to_i %></td>

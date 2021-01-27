@@ -101,7 +101,7 @@ function delete_item(id, price)
 							
 							order_table += '<tr><td>' + (i1 * 1 + 1) + '</td><td>' + item2.id.title + '</td><td>' + 
 								item1.price + '</td><td class="px-0 text-right" width="20"><a href="javascript:decrease_count(' + 
-								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_remove.png" /></a></td><td class="px-0" width="30"><input type="number" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" id="count_' + 
+								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_remove.png" /></a></td><td class="px-0" width="30"><input type="number" min="1" max="99" maxlength="2" onKeyPress="if(this.value.length==2) return false;" onKeyUp="if(this.value>99){this.value = this.value.slice(1, 99);}else if(this.value<1){this.value="1";}" onchange="change_input_count(' + item1.id + ', ' + item1.price + ', this.value)" style="text-align: center; border: 0; outline: none; width: 40px; padding: 0; margin: 0;" id="count_' + 
 								item1.id + '_' + item1.price + '" value="' + item1.count + '" /></td><td class="px-0"><a href="javascript:increase_count(' + 
 								item1.id + ', ' + item1.price + ')"><img width="20" class="m-0" src="/square_add.png" /></a></td><td id="qty_' + 
 								item1.id + '_' + item1.price + '">' + 

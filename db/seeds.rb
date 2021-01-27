@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(username: 'admin', email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true) if Rails.env.development?
+User.create username: 'admin', email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true
+
 Seed.create title: 'Абрикос маньчжурский', latin_title: 'Armeniaca mandshurica', usda: '3'
 Seed.create title: 'Акантопанакс сидячецветковый', latin_title: 'Eleutherococcus sessiliflorus', usda: '4'
 Seed.create title: 'Актинидия Аргутта', latin_title: 'Actinidia arguta', usda: '4'

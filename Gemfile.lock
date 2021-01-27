@@ -303,13 +303,13 @@ PLATFORMS
   x86-mswin32
 
 DEPENDENCIES
-  activeadmin
+  activeadmin (~> 2.9)
   activeadmin_json_editor (~> 0.0.7)
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
   carrierwave (~> 2.1)
-  devise
+  devise (~> 4.7, >= 4.7.3)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.2.3)
@@ -317,7 +317,7 @@ DEPENDENCIES
   rails (~> 6.1.0)
   sass-rails (>= 6)
   selenium-webdriver
-  spring
+  spring (~> 2.1, >= 2.1.1)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

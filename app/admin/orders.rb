@@ -5,7 +5,7 @@ ActiveAdmin.register Order do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :full_name, :phone, :region_id, :address, :zip, :order, :status
+  permit_params :full_name, :phone, :region_id, :address, :zip, :order, :status, :user
 
   index do
     selectable_column
@@ -17,6 +17,7 @@ ActiveAdmin.register Order do
     column :zip
     column :order
     column :status
+    column :user
     actions
   end
 
@@ -33,7 +34,7 @@ ActiveAdmin.register Order do
       f.input :region_id
       f.input :address
       f.input :zip
-      f.input :order, as: :jsonb
+      # f.input :order, as: :jsonb
       f.input :status
     end
     f.actions

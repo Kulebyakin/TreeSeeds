@@ -6,7 +6,12 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = current_user.orders.all.order(id: :desc)
-    redirect_to root_path, notice: "У вас не было заказов. Сделайте первый!" if !@orders.any?
+    redirect_to root_path, notice: "У вас не было заказов. Сделайте первый!" if !@orders.exists?
+  end
+
+  def finished
+    @orders = current_user.orders.where(status: "received")
+    redirect_to root_path, notice: "У вас нет завершенных заказов!" if !@orders.exists?
   end
 
   # GET /orders/1

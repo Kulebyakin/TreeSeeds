@@ -1,0 +1,59 @@
+<h2 class="my-3">Вашы заказы</h2>
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="/orders">Активные заказы</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active disabled" href="">Завершенные заказы</a>
+  </li>
+</ul>
+<br>
+
+<% @orders.each do |order| %>
+  <% if order.status == "received" %>
+    <h4><%= order.full_name %> <%= order.phone %></h4>
+    <p><%= order.zip %> <%= order.region.title %> <%= order.address %></p>
+    <p><%# order.status %></p>
+    <p>
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Наименование</th>
+            <th>Цена</th>
+            <th>Количество</th>
+            <th>Сумма</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% order2 = JSON.parse(order.order) %>
+
+        <% total_count = 0 %>
+        <% total_qty = 0 %>
+
+        <% order2.each do |o| %>
+      
+          <tr>
+            <td><%= Seed.find_by(id: o["id"]).title %></td>
+            <td><%= o["price"] %></td>
+            <td><%= o["count"] %></td>
+            <td><%= o["price"] * o["count"] %></td>
+          </tr>
+          <% total_count += o["count"] %>
+          <% total_qty += o["price"] * o["count"] %>
+        <% end %>
+          <tr>
+            <td><strong>Всего </strong></td>
+            <td></td>
+            <td><strong><%= total_count %></strong></td>
+            <td><strong><%= total_qty %></strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <% if order.status == "received" %>
+        <strong>Статус заказа: </strong>Заказ получен.
+      <% end %>
+    </p><br>
+  <% end %>
+<% end %>

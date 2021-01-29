@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'seeds/:id', to: 'seeds#show', constraints: { id: /\d+/ }
   get 'seeds/:topic', to: 'seeds#topic'
+  get 'orders/:finished', to: 'orders#finished'
 
 
   resources :seeds

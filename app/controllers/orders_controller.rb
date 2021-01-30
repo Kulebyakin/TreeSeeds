@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:show]
 
   # GET /orders
   # GET /orders.json
@@ -69,9 +69,10 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
+
+    def correct_user
+      @order = current_user.orders.find_by(id: params[:id])
+      redirect_to orders_path, notice: "Not authorised to show this order" if @order.nil?
     end
 
     # Only allow a list of trusted parameters through.

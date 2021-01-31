@@ -10,14 +10,14 @@ Rails.application.routes.draw do
   
   post 'cart' => "cart#index"
 
-  get 'seeds/:id', to: 'seeds#show', constraints: { id: /\d+/ }
+  get 'seeds', to: 'seeds#index'
+  get 'seeds/:id', to: 'seeds#show', as: 'seed', constraints: { id: /\d+/ }
   get 'seeds/:topic', to: 'seeds#topic'
-
-  resources :seeds
   
-  get 'orders/:id', to: 'orders#show', constraints: { id: /\d+/ }
+  get 'orders/:id', to: 'orders#show', as: 'order', constraints: { id: /\d+/ }
   get 'orders/:finished', to: 'orders#finished'
-  resources :orders
+  get 'orders', to: 'orders#index', as: 'orders'
+  
   root to: 'seeds#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

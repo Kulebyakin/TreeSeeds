@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'carrierwave', '~> 2.1'
+gem 'fog-aws'
 
 gem 'activeadmin', '~> 2.9'
 gem 'activeadmin_json_editor', '~> 0.0.7'

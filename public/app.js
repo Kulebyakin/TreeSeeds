@@ -215,7 +215,7 @@ function clear_cart()
 function change_img(image_url)
 {
 	// $('#img_link').attr("href", "../" + image_url).html('<img src="../' + image_url + '"/ >');
-	$('#img').attr("src", "../" + image_url);
+	$('#img').attr("src", image_url);
 	// console.log(image_url);
 }
 

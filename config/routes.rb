@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   get 'seeds/:id', to: 'seeds#show', as: 'seed', constraints: { id: /\d+/ }
   get 'seeds/:topic', to: 'seeds#topic'
   
-  get 'orders/:id', to: 'orders#show', as: 'order', constraints: { id: /\d+/ }
-  get 'orders/:finished', to: 'orders#finished'
-  get 'orders', to: 'orders#index', as: 'orders'
+  get 'orders/:id', to: 'orders#show', constraints: { id: /\d+/ }
+  get 'orders/finished', to: 'orders#finished'
   
+  resources :orders
+
   root to: 'seeds#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

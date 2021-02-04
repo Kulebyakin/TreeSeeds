@@ -6,7 +6,7 @@
     <a class="nav-link active disabled" href="#">Активные заказы</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/orders/finished">Завершенные заказы</a>
+    <a class="nav-link <%= "disabled" if @orders_finished.empty? %>" href="/orders/finished">Завершенные заказы</a>
   </li>
 </ul>
 <br>

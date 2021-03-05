@@ -153,7 +153,7 @@ function decrease_count(id, price)
 			{
 				if (item.count <= 1)
 				{
-					delete_item(item.id, item.price);
+					// delete_item(item.id, item.price);
 				} 
 				else
 				{

@@ -28,7 +28,7 @@
 					id="count_<%= item["id"].id %>_<%= item["price"] %>" value="<%= item["count"] %>" /></td>
 				<td class="px-0"><%= link_to(image_tag("/square_add.png", width: "20", class: "m-0"), "javascript:increase_count(#{item["id"].id}, #{item["price"]})") %></td>
 				<td id="qty_<%= item["id"].id %>_<%= item["price"] %>"><%= item["price"].to_i * item["count"].to_i %></td>
-				<td width="50"><%= link_to(image_tag("/bin.png", width: "20", class: "m-0"), "javascript:delete_item(#{item["id"].id}, #{item["price"]})") %></td>
+				<td width="50"><%= link_to(image_tag("/bin.png", width: "20", class: "m-0"), "javascript:delete_item(#{item["id"].id}, #{item["price"]})", onclick: "return confirm('Вы уверены что хотите удалить позицию из корзины?')") %></td>
 			</tr>
 			<% total_qty += item["price"].to_i * item["count"].to_i %>
 			<% total_count += item["count"].to_i %>
@@ -46,62 +46,64 @@
 	</table>
 
 
+	<div class="jumbotron">
+		<h4>Заполните форму чтобы сделать заказ</h4><br>
+		<%= form_with(model: @order) do |form| %>
+			<% if @order.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(Order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-	<%= form_with(model: @order) do |form| %>
-		<% if @order.errors.any? %>
-			<div id="error_explanation">
-				<h2><%= pluralize(Order.errors.count, "error") %> prohibited this order from being saved:</h2>
+					<ul>
+						<% @order.errors.each do |error| %>
+							<li><%= error.full_message %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
 
-				<ul>
-					<% @order.errors.each do |error| %>
-						<li><%= error.full_message %></li>
+
+			<%= form.hidden_field :order, value: @order_input %>
+			<%= form.hidden_field :user_id, value: current_user.id %>
+			<%= form.hidden_field :status, value: "placed" %>
+
+			<div class="form-group">
+				<%= form.label "ФИО:" %>
+				<%= form.text_field :full_name, class: "form-control", placeholder: "Введите ФИО" %>
+			</div>
+
+			<div class="form-group">
+				<%= form.label "Телефон:" %>
+				<%= form.text_field :phone, class: "form-control", placeholder: "Ваш телефон" %>
+			</div>
+
+			<div class="form-group">
+				<%= form.label "Почтовый индекс:" %>
+				<%= form.text_field :zip, class: "form-control", placeholder: "Введите индекс" %>
+			</div>
+
+				<%# <%= form.label "Выберете регион " %>
+				<%# <%= form.collection_select(region_id, region_id.title, :id, :title) %>
+
+			<div class="form-group">
+				<label>Регион РФ:</label>
+				<select name="order[region_id]" class="custom-select" aria-label="Default select example">
+
+					<option selected>Выберете регион</option>
+					<% @regions.each do |region| %>
+						<option value="<%= region.id %>"><%= region.title %></option>
 					<% end %>
-				</ul>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<%= form.label "Адрес:" %>
+				<%= form.text_field :address, class: "form-control", placeholder: "Адрес доставки" %>
+			</div>
+
+			<div class="actions">
+				<%= form.submit "Разместить заказ", class: "btn btn-primary", onclick: "clear_cart()" %>
+				<%= form.submit "Очистить корзину", class: "btn btn-danger", onclick: "return cancel_order()" %>
 			</div>
 		<% end %>
-
-
-		<%= form.hidden_field :order, value: @order_input %>
-		<%= form.hidden_field :user_id, value: current_user.id %>
-		<%= form.hidden_field :status, value: "placed" %>
-
-		<div class="form-group">
-			<%= form.label "ФИО:" %>
-			<%= form.text_field :full_name, class: "form-control", placeholder: "Введите ФИО" %>
-		</div>
-
-		<div class="form-group">
-			<%= form.label "Телефон:" %>
-			<%= form.text_field :phone, class: "form-control", placeholder: "Ваш телефон" %>
-		</div>
-
-		<div class="form-group">
-			<%= form.label "Почтовый индекс:" %>
-			<%= form.text_field :zip, class: "form-control", placeholder: "Введите индекс" %>
-		</div>
-
-			<%# <%= form.label "Выберете регион " %>
-			<%# <%= form.collection_select(region_id, region_id.title, :id, :title) %>
-
-		<div class="form-group">
-			<label>Регион РФ:</label>
-			<select name="order[region_id]" class="custom-select" aria-label="Default select example">
-
-				<option selected>Выберете регион</option>
-				<% @regions.each do |region| %>
-					<option value="<%= region.id %>"><%= region.title %></option>
-				<% end %>
-			</select>
-		</div>
-
-		<div class="form-group">
-			<%= form.label "Адрес:" %>
-			<%= form.text_field :address, class: "form-control", placeholder: "Адрес доставки" %>
-		</div>
-
-		<div class="actions">
-			<%= form.submit "Разместить заказ", class: "btn btn-primary", onclick: "clear_cart()" %>
-			<%= form.submit "Очистить корзину", class: "btn btn-danger", onclick: "return cancel_order()" %>
-		</div>
-	<% end %>
+	</div>
 </div>

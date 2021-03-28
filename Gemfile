@@ -35,6 +35,8 @@ gem 'fog-aws'
 gem 'activeadmin', '~> 2.9'
 gem 'activeadmin_json_editor', '~> 0.0.7'
 
+gem 'mimemagic', github: 'mimemagicrb/mimemagic', ref: '01f92d86d15d85cfd0f20dabd025dcbd36a8a60f'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

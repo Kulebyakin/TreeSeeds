@@ -31,7 +31,7 @@ ActiveAdmin.register Seed do
       f.input :conifers
       f.input :availability
       f.input :image, as: :file, input_html: { multiple: true }
-      f.input :description
+      f.text_area :description
       f.input :created_at
     end
     f.actions

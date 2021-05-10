@@ -117,4 +117,19 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.action_mailer.delivery_method = :smtp
+  host = 'treeseeds.ru'
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings
+  config.action_mailer.smtp_settings = {
+    :address              => ENV['mail_address'],
+    :port                 => 465,
+    :user_name            => ENV['mail_username'],
+    :password             => ENV['mail_password'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+
 end

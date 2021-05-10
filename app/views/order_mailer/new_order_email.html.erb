@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Новый заказ от <%= @order.full_name %>!</p>
+    <p>
+    Детали заказа<br>
+    --------------------------
+    </p>
+    <p>Имя: <%= @order.full_name %></p>
+    <%# <p>Регион: <%= @order.region.title %></p>
+    <p>Адрес: <%= @order.address %></p>
+    <p>Почтовый Индекс: <%= @order.zip %></p>
+    <p>Телефон: <%= @order.phone %></p>
+    <p>
+    Заказ:<br>
+    ----------
+    </p>
+    <p><%= @order.order %></p>
+  </body>
+</html>

@@ -1,29 +1,41 @@
 <h2 class="my-3">Ваш заказ</h2>
 <div>
-	<table class="table table-stripped">
+	<div class="border p-3 mb-3">
+	<h4><%= @order.full_name %> <%= @order.phone %></h4>
+	<p>Адрес: <%= @order.zip %> <%= @order.region.title %> <%= @order.address %></p>
+
+	<table class="table table-sm">
 		<thead>
 			<tr>
-				<th>ФИО</th>
-				<th>Телефон</th>
-				<th>Регион</th>
-				<th>Адрес</th>
-				<th>Индекс</th>
-				<th>Статус</th>
-				<th>Заказ</th>
+				<th>Наименование</th>
+				<th>Цена</th>
+				<th>Количество</th>
+				<th>Сумма</th>
 			</tr>
 		</thead>
 		<tbody>
+		<% order2 = JSON.parse(@order.order) %>
 
+		<% total_count = 0 %>
+		<% total_sum = 0 %>
+
+		<% order2.each do |o| %>
+	
 			<tr>
-				<td><%= @order.full_name %></td>
-				<td><%= @order.phone %></td>
-				<td><%= @order.region.title %></td>
-				<td><%= @order.address %></td>
-				<td><%= @order.zip %></td>
-				<td><%= @order.status %></td>
-				<td><%= @order.order %></td>
-				
+				<td><%= Seed.find_by(id: o["id"]).title %></td>
+				<td><%= o["price"] %></td>
+				<td><%= o["count"] %></td>
+				<td><%= o["price"] * o["count"] %></td>
 			</tr>
-
+			<% total_count += o["count"] %>
+			<% total_sum += o["price"] * o["count"] %>
+		<% end %>
+			<tr>
+				<td><strong>Всего </strong></td>
+				<td></td>
+				<td><strong><%= total_count %></strong></td>
+				<td><strong><%= total_sum %></strong></td>
+			</tr>
 		</tbody>
 	</table>
+	</div>

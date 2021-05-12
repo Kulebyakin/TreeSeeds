@@ -38,7 +38,8 @@ class OrdersController < ApplicationController
       if @order.save
         format.html { redirect_to @order, notice: 'order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
-        OrderMailer.with(order: @order).new_order_email.deliver_later
+
+        OrderMailer.with(order: @order).new_order_email.deliver_later # sending new-order-email to admin
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }

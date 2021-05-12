@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -37,7 +37,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -76,4 +76,23 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.delivery_method = :smtp
+  host = 'treeseeds.ru'
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings
+  config.action_mailer.smtp_settings = {
+    :address              => ENV['mail_address'],
+    :port                 => 465,
+    :user_name            => ENV['mail_username'],
+    :password             => ENV['mail_password'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true,
+    :openssl_verify_mode  => 'none',
+    :ssl                  => true,
+    :tls                  => true
+  }
+
 end

@@ -1,16 +1,22 @@
-
 Новый заказ от <%= @order.full_name %>!
 
 Детали заказа
 ========================================
-
 Имя: <%= @order.full_name %>
-Регион: <%# @order.region.title %>
+Регион: <%= @order.region.title %>
 Адрес: <%= @order.address %>
 Почтовый Индекс: <%= @order.zip %>
 Телефон: <%= @order.phone %>
 
 Заказ:
-========================================
-
-<%= @order.order %>
+=========================================
+Наименование      Цена         Количество    Сумма
+<% order2 = JSON.parse(@order.order) %>
+<% total_count = 0 %>
+<% total_sum = 0 %>
+<% order2.each do |o| %>
+<%= Seed.find_by(id: o["id"]).title %>    <%= o["price"] %>        <%= o["count"] %>             <%= o["price"] * o["count"] %>
+<% total_count += o["count"] %>
+<% total_sum += o["price"] * o["count"] %>
+<% end %>
+Всего                         <%= total_count %>             <%= total_sum %>

@@ -40,6 +40,7 @@ class OrdersController < ApplicationController
         format.json { render :show, status: :created, location: @order }
 
         OrderMailer.with(order: @order).new_order_email.deliver_later # sending new-order-email to admin
+        OrderMailer.with(order: @order).new_order_to_user_email.deliver_later # sending new-order-email to user
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }

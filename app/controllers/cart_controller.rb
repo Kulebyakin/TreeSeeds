@@ -16,6 +16,7 @@ class CartController < ApplicationController
     end
     @regions = Region.all
     @order = Order.new
+    @lastorder = current_user.orders.last
   end
 
 end

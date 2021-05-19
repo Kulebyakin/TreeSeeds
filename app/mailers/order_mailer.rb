@@ -2,7 +2,7 @@ class OrderMailer < ApplicationMailer
   def new_order_email
     @order = params[:order]
 
-    mail(to: ENV['admin_mail'], subject: "Новый заказ!")
+    mail(to: Rails.application.credentials[:ADMIN_MAIL], subject: "Новый заказ!")
   end
 
   def new_order_to_user_email

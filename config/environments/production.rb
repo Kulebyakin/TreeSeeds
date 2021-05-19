@@ -124,11 +124,11 @@ Rails.application.configure do
 
   # SMTP settings
   config.action_mailer.smtp_settings = {
-    :address              => ENV['mail_address'],
-    :port                 => 465,
-    :user_name            => ENV['mail_username'],
-    :password             => ENV['mail_password'],
-    :authentication       => "plain",
+    :address              => Rails.application.credentials[:MAIL_ADDRESS],
+    :port                 => Rails.application.credentials[:MAIL_PORT],
+    :user_name            => Rails.application.credentials[:MAIL_USERNAME],
+    :password             => Rails.application.credentials[:MAIL_PASSWORD],
+    :authentication       => 'plain',
     :enable_starttls_auto => true,
     :openssl_verify_mode  => 'none',
     :ssl                  => true,

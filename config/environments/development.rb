@@ -90,8 +90,8 @@ Rails.application.configure do
     :password             => ENV['mail_password'],
     :authentication       => "plain",
     :enable_starttls_auto => true,
-    :openssl_verify_mode  => 'none',
-    :ssl                  => true,
+    #:openssl_verify_mode  => 'none',
+    #:ssl                  => true,
     :tls                  => true
   }
 

@@ -124,10 +124,10 @@ Rails.application.configure do
 
   # SMTP settings
   config.action_mailer.smtp_settings = {
-    :address              => Rails.application.credentials[:MAIL_ADDRESS],
-    :port                 => Rails.application.credentials[:MAIL_PORT],
-    :user_name            => Rails.application.credentials[:MAIL_USERNAME],
-    :password             => Rails.application.credentials[:MAIL_PASSWORD],
+    :address              => Rails.application.credentials.mail_address,
+    :port                 => Rails.application.credentials.mail_port,
+    :user_name            => Rails.application.credentials.mail_username,
+    :password             => Rails.application.credentials.mail_password,
     :authentication       => 'plain',
     :enable_starttls_auto => true,
     :openssl_verify_mode  => 'none',

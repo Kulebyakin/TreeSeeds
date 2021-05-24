@@ -42,19 +42,17 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cемена</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   <%= link_to 'Все семена', '/seeds', class: "dropdown-item" %>
+                   <%= link_to 'Хвойные', '/seeds/conifers', class: "dropdown-item" %>
+                   <%= link_to 'Лиственные', '/seeds/deciduous', class: "dropdown-item" %>
+                </div>
+              </li>
               <li class="nav-item">
                 <%= link_to 'О нас', '/about', class: "nav-link" %>
               </li>
-              <li class="nav-item">
-                <%= link_to 'Все семена', '/seeds', class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Хвойные', '/seeds/conifers', class: "nav-link" %>
-              </li>
-              <li class="nav-item">
-                <%= link_to 'Лиственные', '/seeds/deciduous', class: "nav-link" %>
-              </li>
-              
               <li class="nav-item">
                 <%= link_to 'Оплата и доставка', '/about/payment', class: "nav-link" %>
               </li>
@@ -67,8 +65,7 @@
                 <%= link_to 'Admin Panel',  admin_root_path, class: "nav-link" if current_user.admin? %>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <%= current_user.username %>
-                  </a>
+                    <%= current_user.username %></a>
                   
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <%= link_to 'Мои заказы', orders_path, class:"dropdown-item" if current_user.orders.any? %>

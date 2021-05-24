@@ -43,6 +43,9 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
+                <%= link_to 'О нас', '/about', class: "nav-link" %>
+              </li>
+              <li class="nav-item">
                 <%= link_to 'Все семена', '/seeds', class: "nav-link" %>
               </li>
               <li class="nav-item">
@@ -50,6 +53,10 @@
               </li>
               <li class="nav-item">
                 <%= link_to 'Лиственные', '/seeds/deciduous', class: "nav-link" %>
+              </li>
+              
+              <li class="nav-item">
+                <%= link_to 'Оплата и доставка', '/about/payment', class: "nav-link" %>
               </li>
               <%# <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

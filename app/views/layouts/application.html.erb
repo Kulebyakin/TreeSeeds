@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treeseeds</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <style>
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    input[type="number"] {
-      -moz-appearance: textfield;
-    }
-    </style>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
+    <script src="/app.js"></script>
+
+    <%= stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%# javascript_include_tag 'app', 'data-turbolinks-track': 'reload' %>
+    <%# stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%# javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     
@@ -22,18 +22,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-    <script src="/app.js"></script>
-
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%# stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="d-flex flex-column min-vh-100">
     
-
       <nav class="navbar navbar-expand-lg navbar-light sticky-top border-bottom" style="background-color: #f3f3f3;">
         <div class="container-fluid pr-0">
           <a class="navbar-brand" href="/">Treeseeds</a>

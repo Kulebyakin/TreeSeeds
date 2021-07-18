@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:show]
+  before_action :correct_user, only: :show
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = current_user.orders.all.order(id: :desc)
+    @orders = current_user.orders.order(id: :desc)
     redirect_to root_path, notice: "У вас не было заказов. Сделайте первый!" if @orders.empty?
     @orders_finished = current_user.orders.where(status: "received")
   end

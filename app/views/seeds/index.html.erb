@@ -1,36 +1,29 @@
 <p class="h3 my-3">Семена деревьев</p>
-<div class="row">
+<div class="row justify-content-center justify-content-sm-start">
 
-      <% @seeds.each do |seed| %>
-        <% if seed.image? %>
-        
-          <div class="col-md-2.5 p-0 m-2">
-            <%= link_to(image_tag(seed.image[0].thumb200.url, alt: seed.title, class: "img-thumbnail"), seed)  %>
-            
-            <p class="text-left m-1" style="font-family: 'Roboto', sans-serif; width: 200px;"><%= seed.title %></p>
+  <% @seeds.each do |seed| %>
+    <% if seed.image? %>
+      <div class="col col-11 col-sm-4 col-md-3 col-lg-2 p-0 m-0">
+        <div class="p-0 m-1">
+          <%= link_to(image_tag(seed.image.first.thumb200.url, alt: seed.title, class: "img-thumbnail w-100"), seed) %>
+          <div class="mx-1">
+            <p class="text-left m-0" style="font-family: 'Roboto', sans-serif; max-width: 200px;"><%= seed.title %></p>
             <% seed.prices.each do |price| %>
               <% if seed.availability == true %>
-                <button class="btn btn-success btn-sm m-1" onClick="add_to_cart(<%= seed.id %>, <%= price.price %>)">В корзину</button>
+                <button class="btn btn-success btn-sm" onClick="add_to_cart(<%= seed.id %>, <%= price.price %>)">В корзину</button>
+                <br>
                 <%= price.amount %>
                 <%= price.unit %>
                 <%= price.price %> р. <br>
               <% else %>
-                <button class="btn btn-secondary btn-sm m-1" disabled>Нет в наличии</button>
+                <button class="btn btn-secondary btn-sm" disabled>Нет в наличии</button>
               <% end %>
             <% end %>
-            <%# seed.usda %>
-            <%# seed.description[0..50] if seed.description.present? && seed.description.length > 50 %>
-            <%# <p>
-              <%# link_to 'Show', seed %>
-              <%# link_to 'Edit', edit_seed_path(seed) %>
-              <%# link_to 'Destroy', seed, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%# </p> %>
-            
           </div>
-        <% end %>
-      <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
 </div>
 <br>
-
-<%# link_to 'New Seed', new_seed_path %>

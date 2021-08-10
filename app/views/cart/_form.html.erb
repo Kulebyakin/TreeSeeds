@@ -1,0 +1,52 @@
+<%= form_with(model: @order) do |form| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(Order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% @order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.hidden_field :order, value: @order_input %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :status, value: "placed" %>
+
+  <div class="form-group">
+    <%= form.label "ФИО:" %>
+    <%= form.text_field :full_name, class: "form-control", placeholder: "Введите ФИО", value: @lastorder.try(:full_name) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Телефон:" %>
+    <%= form.text_field :phone, class: "form-control", placeholder: "Ваш телефон", value: @lastorder.try(:phone) %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Почтовый индекс:" %>
+    <%= form.text_field :zip, class: "form-control", placeholder: "Введите индекс", value: @lastorder.try(:zip) %>
+  </div>
+
+  <div class="form-group">
+    <label>Регион РФ:</label>
+    <select name="order[region_id]" class="custom-select" aria-label="Default select example">
+      <option selected value="<%= @lastorder.try(:region).try(:id) %>"><%= @lastorder.try(:region).try(:title) || "Выбирите регион..." %></option>
+      <% @regions.each do |region| %>
+        <option value="<%= region.id %>"><%= region.title %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <%= form.label "Адрес:" %>
+    <%= form.text_field :address, class: "form-control", placeholder: "Адрес доставки", value: @lastorder.try(:address) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Разместить заказ", class: "btn btn-primary", onclick: "clear_cart()" %>
+    <%= form.submit "Очистить корзину", class: "btn btn-danger my-2", onclick: "return cancel_order()" %>
+  </div>
+<% end %>

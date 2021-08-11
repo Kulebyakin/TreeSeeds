@@ -5,7 +5,7 @@
     <% if seed.image? %>
       <div class="col col-11 col-sm-4 col-md-3 col-lg-2 p-0 m-0">
         <div class="p-0 m-1">
-          <%= link_to(image_tag(seed.image.first.thumb200.url, alt: seed.title, class: "img-thumbnail w-100"), seed) %>
+          <%= link_to(image_tag(seed.image.first.thumb400.url, alt: seed.title, class: "img-thumbnail w-100"), seed) %>
           <div class="mx-1">
             <p class="text-left m-0" style="font-family: 'Roboto', sans-serif; max-width: 200px;"><%= seed.title %></p>
             <% seed.prices.each do |price| %>
